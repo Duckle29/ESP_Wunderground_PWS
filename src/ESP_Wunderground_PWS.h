@@ -2,9 +2,8 @@
 
 #include <Arduino.h>
 #include <math.h>
-#include <esp8266httpclient.h>
-#include <dns.h>
-#include <esp8266wifi.h>
+#include <ESP8266HTTPClient.h>
+#include <ESP8266WiFi.h>
 
 class Wunderground
 {

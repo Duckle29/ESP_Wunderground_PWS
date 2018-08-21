@@ -1,4 +1,4 @@
-#include <wunderground.h>
+#include <ESP_Wunderground_PWS.h>
 
 Wunderground::Wunderground(const char * ID, const char * pass)
 {

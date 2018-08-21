@@ -1,13 +1,5 @@
+#include <ESP8266WiFi.h>
 #include <ESP_Wunderground_PWS.h>
-#include <esp8266wifi.h>
-
-/*
-if you want to keep your credentials in a seperate file,
-then create a file called credentials.h in the same folder
-as your main sketch, and move the credential variables in to it:
-Then include this file
-*/
-// #include "credentials.h" 
 
 const char* ssid = "YOUR WIFI NAME";
 const char* password = "YOUR WIFI PASS";
