@@ -1,11 +1,23 @@
-#include <wunderground.h>
+#include <ESP_Wunderground_PWS.h>
 #include <esp8266wifi.h>
 
-const char* ssid = "yourNetworkName";
-const char* password = "yourNetworkPassword";
+/*
+if you want to keep your credentials in a seperate file,
+then create a file called credentials.h in the same folder
+as your main sketch, and move the credential variables in to it:
+Then include this file
+*/
+// #include "credentials.h" 
+
+const char* ssid = "YOUR WIFI NAME";
+const char* password = "YOUR WIFI PASS";
+
+const char* WG_ID = "YOUR WG ID";
+const char* WG_PASS = "YOUR WG PWS PASS";
+
 
 // Initialize the library with your credentials, and start a new query
-Wunderground wg("YOUR ID", "YOUR PASS");
+Wunderground wg(WG_ID, WG_PASS);
 
 void setup()
 {
