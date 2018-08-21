@@ -1,0 +1,21 @@
+
+#######################################
+# Syntax Coloring Map For wunderground ESP library
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+Wunderground	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+send_update	KEYWORD2
+new_query	KEYWORD2
+add_item	KEYWORD2
+add_temp_f	KEYWORD2
+add_temp_c	KEYWORD2
+add_relative_humidity	KEYWORD2
