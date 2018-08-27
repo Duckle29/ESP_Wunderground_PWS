@@ -13,13 +13,13 @@ Wunderground wg(WG_ID, WG_PASS);
 
 void setup()
 {
-	Serial.begin(115200);
+    Serial.begin(115200);
     WiFi.mode(WIFI_OFF);        //Prevents reconnection issue (taking too long to connect)
     delay(1000);
     WiFi.mode(WIFI_STA);        //This line hides the viewing of ESP as wifi hotspot
-	WiFi.begin(ssid, password);
-	
-	Serial.print("\nConnecting");
+    WiFi.begin(ssid, password);
+    
+    Serial.print("\nConnecting");
     // Wait for connection
     while (WiFi.status() != WL_CONNECTED) 
     {
@@ -42,5 +42,5 @@ void setup()
 
 void loop()
 {
-	delay(0);
+    delay(0);
 }
