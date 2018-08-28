@@ -28,7 +28,7 @@ SOFTWARE.
 const char* ssid = "YOUR WIFI NAME";
 const char* password = "YOUR WIFI PASS";
 
-const char* WG_ID = "YOUR WG ID";
+const char* WG_ID = "YOUR WG PWS ID";
 const char* WG_PASS = "YOUR WG PWS PASS";
 
 
