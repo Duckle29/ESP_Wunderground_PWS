@@ -1,3 +1,27 @@
+/*
+MIT License
+
+Copyright (c) 2018 Mikkel Jeppesen
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
+
 #include <ESP_Wunderground_PWS.h>
 
 Wunderground::Wunderground(const char * ID, const char * pass)
@@ -14,21 +38,27 @@ void Wunderground::new_query()
     _query = String("?action=updateraw");
     add_item(String("ID"), _ID);
     add_item(String("PASSWORD"), _pass);
+    _rh = -1;
+    _tempC = -128;
 }
 
 // ------ Helper functions to easilly add common fields -----
 
 // Add one multiple temperature readings to the query
-void Wunderground::add_temp_c(float tempC, uint8_t sensor)
+void Wunderground::add_temp_c(float tempC, bool indoor, uint8_t sensor)
 {
-    add_temp_f(_celcius_to_fahrenheit(tempC), sensor);
+    add_temp_f(_celcius_to_fahrenheit(tempC), sensor, indoor);
 }
 
-void Wunderground::add_temp_f(float tempF, uint8_t sensor)
+void Wunderground::add_temp_f(float tempF, bool indoor, uint8_t sensor)
 {
     String item = "";
 
-    if(sensor > 1)
+    if(indoor)
+    {
+        item = "indoortempf";
+    }
+    else if(sensor > 1)
     {
         item = "temp";
         item += String(sensor);
@@ -36,7 +66,7 @@ void Wunderground::add_temp_f(float tempF, uint8_t sensor)
     }
     else
     {
-        item = String("tempf");
+        item = "tempf";
     }
 
     add_item(item, String(tempF));
@@ -44,10 +74,17 @@ void Wunderground::add_temp_f(float tempF, uint8_t sensor)
     _tempC = _fahrenheit_to_celcius(tempF); // Used for dewpoint_calc
 }
 
-void Wunderground::add_relative_humidity(float RH)
+void Wunderground::add_relative_humidity(float RH, bool indoor)
 {
-    add_item("humidity", String(RH));
     _rh = RH;
+    if(indoor)
+    {
+        add_item("indoorhumidity", String(RH));
+    }
+    else
+    {
+        add_item("humidity", String(RH));
+    }
 }
 
 // ------ END ------
