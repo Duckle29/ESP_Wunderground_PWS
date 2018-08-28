@@ -121,7 +121,7 @@ int16_t Wunderground::send_update(bool realtime)
 
     if(!WiFi.hostByName(realtime ? _API_HOST_REALTIME.c_str() : _API_HOST.c_str(), HOST_IP)) //
     {
-        return -100;
+        return -100; // Failed to look up ip of wunderground
     }
 
     String final_query = "http://";

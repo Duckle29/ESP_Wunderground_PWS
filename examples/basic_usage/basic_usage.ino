@@ -78,6 +78,11 @@ void wg_example()
     // http://wiki.wunderground.com/index.php/PWS_-_Upload_Protocol
     wg.add_item("baromin", String(29.9)); 
 
+    // Print return-code of send_updates
+    // -100 = dns lookup failed
+    // else, refer to HTTPClient library for meaning of other return codes
+    // In short, any return-code under 0 is client error, any return code above
+    // 0 is an HTTP code (200 ok, 404 not found. etc)
     Serial.println(wg.send_update());
 }
 
