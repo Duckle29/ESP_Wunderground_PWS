@@ -42,8 +42,10 @@ class Wunderground
 		void add_temp_c(float tempC, bool indoor = false, uint8_t sensor = 1);
 		void add_relative_humidity(float RH, bool indoor = false);
 
-		
-
+		// This function is made available to get a dew point, but should not be
+		// used to send to wg. This is automatically done if both temp and rh
+		// is added to the query
+		float _dew_point_c(float tempF, float rh);
 
 	private:
 		String _API_HOST            = "weatherstation.wunderground.com";
@@ -61,5 +63,4 @@ class Wunderground
 		String _urlencode(String str);
 		float _celcius_to_fahrenheit(float tempC);
 		float _fahrenheit_to_celcius(float tempF);
-		float _dew_point_c(float tempF, float rh);
 };
