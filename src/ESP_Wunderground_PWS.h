@@ -45,7 +45,7 @@ class Wunderground
 		// This function is made available to get a dew point, but should not be
 		// used to send to wg. This is automatically done if both temp and rh
 		// is added to the query
-		float _dew_point_c(float tempF, float rh);
+		float _dew_point_c(float tempC, float rh);
 
 	private:
 		String _API_HOST            = "weatherstation.wunderground.com";
