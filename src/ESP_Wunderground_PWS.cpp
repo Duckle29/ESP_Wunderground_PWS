@@ -47,7 +47,7 @@ void Wunderground::new_query()
 // Add one multiple temperature readings to the query
 void Wunderground::add_temp_c(float tempC, bool indoor, uint8_t sensor)
 {
-    add_temp_f(_celcius_to_fahrenheit(tempC), sensor, indoor);
+    add_temp_f(_celcius_to_fahrenheit(tempC), indoor, sensor);
 }
 
 void Wunderground::add_temp_f(float tempF, bool indoor, uint8_t sensor)
