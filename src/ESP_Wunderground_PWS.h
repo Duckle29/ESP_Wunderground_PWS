@@ -53,6 +53,7 @@ class Wunderground
 		String _API_URI				= "/weatherstation/updateweatherstation.php";
 
 		String _ID, _pass, _query;
+		WiFiClient wifiClient;
 		HTTPClient _http;
 
 		bool _date_set  = false;

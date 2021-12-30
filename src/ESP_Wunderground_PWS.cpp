@@ -130,7 +130,7 @@ int16_t Wunderground::send_update(bool realtime)
     final_query += _query;
     
     // Send the query
-    _http.begin(final_query);
+    _http.begin(wifiClient, final_query);
     
     int16_t ret_code = _http.GET();
 
